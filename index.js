@@ -6,7 +6,6 @@ const [BILI_JCT, SESSDATA,DEDEUSERID,DEDEUSERID__CKMD5] = process.argv.slice(2);
 
 //注册字体
 registerFont('digit.ttf', { family: 'digit' });
-registerFont('hanzi.ttf', { family: 'hanzi' });
 
 //B站推荐头图尺寸2560x400，最小尺寸1280x200
 const canvasSize = {w:2560,h:400};
@@ -85,7 +84,7 @@ async function painting(){
 
     //设置文字颜色和字号，字体
     ctx.fillStyle = "#e6433a";
-    ctx.font = '97px hanzi';
+    ctx.font = '97px digit';
 
     //获得鸽的天数
     let days = await getLastPubDistance();
@@ -114,8 +113,6 @@ async function painting(){
     //canvas转base64编码后上传
     const base64 = encodeURIComponent(canvas.toDataURL("image/png").substring(22));
     postTopPhoto(base64);
-
-    // fs.writeFileSync("image.png",canvas.toBuffer(),"utf-8");
 }
 
 painting();
